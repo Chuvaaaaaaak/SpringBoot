@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 <body>
-
 <H1>Login page</H1>
-<table border="2" cellpadding="10">
-    <div>
+
+    <div class="container-fluid">
         <form method="post" action="/login">
-            <div><b>Login:</b></div>
+            <div style="color: darkblue"><b>Login:</b></div>
             <input name="username" placeholder="Enter your username"/>
+            <br>
+            <br>
+                <div style="color: chartreuse"><b>Password:</b></div>
+                <input name="password" type="password" placeholder="Enter your password"/>
             <br><br>
-            <div><b>Password:</b></div>
-            <input name="password" type="password" placeholder="Enter your password"/>
-            <br><br><br>
             <input type="submit" value="Log in"/>
         </form>
     </div>
-</table>
+
 
 
 </body>

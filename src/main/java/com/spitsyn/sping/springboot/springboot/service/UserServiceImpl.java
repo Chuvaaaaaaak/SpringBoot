@@ -29,23 +29,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(long id) {
-//        User user = null;
-//        Optional<User> optional = userRepository.findById(id);
-//        if(optional.isPresent()) {
-//            user = optional.get();
-//        }
-//        return user;
-        return userRepository.getOne(id);
+        return userRepository.findById(id).get();
     }
+
 
     @Override
     public void saveUser(User user, String[] roles) {
         Set<Role> updateRole = new HashSet<>();
         for(String role : roles) {
             if(role.equals("ROLE_ADMIN")) {
-                updateRole.add(getRole(1));
+                updateRole.add(getRole(1L));
             } else {
-                updateRole.add(getRole(2));
+                updateRole.add(getRole(2L));
             }
         }
         user.setRoles(updateRole);
@@ -54,8 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Role getRole(long id) {
-        Optional<Role> optionalUser = roleRepository.findById(id);
-        return optionalUser.get();
+        return roleRepository.findById(id).get();
     }
 
 
