@@ -75,12 +75,14 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Username</th>
                                 <th>Role</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <th><span sec:authentication="principal.id"></span></th>
+                                <th><span sec:authentication="principal.name"></span></th>
                                 <th><span sec:authentication="principal.username"></span></th>
                                 <th><span sec:authentication="principal.authorities"></span></th>
                             </tr>
