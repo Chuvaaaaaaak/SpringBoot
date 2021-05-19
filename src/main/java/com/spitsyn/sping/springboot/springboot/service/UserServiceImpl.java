@@ -2,10 +2,10 @@ package com.spitsyn.sping.springboot.springboot.service;
 
 
 import com.spitsyn.sping.springboot.springboot.model.User;
-import com.spitsyn.sping.springboot.springboot.repository.RoleRepository;
 import com.spitsyn.sping.springboot.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -27,6 +27,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
        return userRepository.save(user);
+    }
+
+    @Override
+    public boolean updateUser(User user, Long id) {
+      User updateUser =  userRepository.findById(id).get();
+      if(updateUser.getId() == user.getId()) {
+          userRepository.save(user);
+          return true;
+      }
+        return false;
     }
 
     @Override

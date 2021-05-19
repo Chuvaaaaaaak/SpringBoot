@@ -13,6 +13,8 @@ public interface UserService {
 
     User saveUser(User user);
 
+    boolean updateUser(User user, Long id);
+
     void deleteUser(long id);
 
     User findByUsername(String username);

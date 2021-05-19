@@ -1,10 +1,15 @@
 package com.spitsyn.sping.springboot.springboot.model;
 
 
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
@@ -17,15 +22,21 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Long id;
 
+//    @NotEmpty(message = "Имя не может быть пустым")
+//    @Size(min = 3, max = 23, message = "Имя задается в диапазоне от 3 до 23")
     @Column(name = "username")
     private String name;
 
+//    @NotEmpty(message = "Пароль не может быть пустым")
     @Column(name = "password")
     private String password;
 
+//    @Min(value = 0, message = "Возраст не может быть меньше 0")
     @Column(name = "age")
     private byte age;
 
+//    @Email(message = "Логин должен быть корректным. Пример: test@yandex.ru")
+//    @NotEmpty(message = "Логин не может быть пустым")
     @Column(name = "email", unique = true)
     private String username;
 
@@ -118,5 +129,6 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 }
 
