@@ -5,7 +5,7 @@ package com.spitsyn.sping.springboot.springboot.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-
+import java.util.Set;
 
 
 @Entity
@@ -27,6 +27,7 @@ public class Role implements GrantedAuthority {
         this.id = id;
         this.role = role;
     }
+
 
     @Override
     public String getAuthority() {

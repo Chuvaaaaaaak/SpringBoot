@@ -42,7 +42,7 @@ public class User implements UserDetails {
     @Column(name = "email", unique = true)
     private String username;
 
-    @ManyToMany(fetch = FetchType.LAZY) //cascade = CascadeType.DETACH)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
@@ -134,3 +134,5 @@ public class User implements UserDetails {
 
 }
 
+
+//Java TToken Security  добавить в проект
