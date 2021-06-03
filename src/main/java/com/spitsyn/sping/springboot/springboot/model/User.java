@@ -4,12 +4,14 @@ package com.spitsyn.sping.springboot.springboot.model;
 import net.bytebuddy.implementation.bind.annotation.Default;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Set;
 
@@ -36,11 +38,11 @@ public class User implements UserDetails {
     private byte age;
 
 //    @Email(message = "Логин должен быть корректным. Пример: test@yandex.ru")
-//    @NotEmpty(message = "Логин не может быть пустым")
+    @NotEmpty(message = "Логин не может быть пустым")
     @Column(name = "email", unique = true)
     private String username;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY) //cascade = CascadeType.DETACH)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
@@ -107,7 +109,7 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder(12,new SecureRandom()).encode(password);
     }
 
     public byte getAge() {

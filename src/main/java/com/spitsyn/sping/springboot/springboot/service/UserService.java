@@ -1,15 +1,17 @@
 package com.spitsyn.sping.springboot.springboot.service;
 
 import com.spitsyn.sping.springboot.springboot.model.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface UserService {
 
     List<User> allUsers();
 
-    User getUser(long id);
+    Optional<User> getUser(long id);
 
     User saveUser(User user);
 
@@ -17,6 +19,6 @@ public interface UserService {
 
     void deleteUser(long id);
 
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
 
 }
